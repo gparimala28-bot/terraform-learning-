@@ -1,0 +1,166 @@
+ 🚀 Terraform (Infrastructure as Code)
+
+## What is Terraform?
+
+Terraform is a tool used to create and manage infrastructure using code instead of doing everything manually.
+
+In simple words, instead of going to AWS console and clicking buttons,
+👉 I can write code and Terraform will create everything for me.
+
+When we say "infrastructure", it includes:
+
+* Servers (EC2)
+* Storage (S3)
+* Databases (RDS)
+* Networks (VPC, subnets)
+* Security groups
+
+---
+
+## Why Do We Need Terraform?
+
+Before Terraform, infrastructure was created manually or using cloud-specific tools.
+
+Example:
+
+* Login to AWS console
+* Create EC2
+* Configure security group
+* Attach storage
+
+Problems with this approach:
+
+* Very time-consuming
+* Repetitive work
+* High chance of mistakes
+* Not scalable
+
+I realized that creating even a few resources manually is slow, so managing large infrastructure becomes difficult.
+
+---
+
+## Problem with Traditional IaC Tools
+
+Each cloud has its own tool:
+
+* AWS → CloudFormation
+* Azure → ARM
+
+This creates problems:
+
+* Need to learn multiple tools
+* Hard to switch between clouds
+* Migration becomes difficult
+
+👉 Same task, but different tools
+
+---
+
+## Why I Learned Terraform
+
+I found Terraform useful because:
+
+* It works with multiple clouds (AWS, Azure, etc.)
+* I can use one tool everywhere
+* It is easy to automate infrastructure
+* It supports reusable code
+
+👉 “Write once, use anywhere”
+
+---
+
+## How Terraform Works (My Understanding)
+
+I write code in `.tf` files.
+
+Terraform reads that code and:
+
+* Converts it into API calls
+* Sends requests to cloud
+* Cloud creates resources
+
+Flow:
+My Code (main.tf)
+↓
+Terraform
+↓
+Cloud API
+↓
+Infrastructure Created
+
+---
+
+## Terraform Workflow (What I Did)
+
+1. Wrote configuration file
+2. Ran:
+
+   * `terraform init` → initialize project
+   * `terraform plan` → preview changes
+   * `terraform apply` → create resources
+
+---
+
+## Important Concept I Learned (API)
+
+* API = way to communicate with cloud using code
+
+Example:
+
+* Manual → clicking UI
+* API → sending request via code
+
+👉 Terraform automatically handles API calls
+👉 I don’t need to write them manually
+
+---
+
+## Error I Faced 
+
+When I ran `terraform plan`, I got an error:
+
+**InvalidClientTokenId (403 error)**
+
+Reason:
+
+* AWS credentials were wrong or missing
+
+This helped me understand:
+
+* Terraform depends on cloud authentication
+* Without credentials, nothing works
+
+Fix:
+
+* Reconfigured using `aws configure`
+* Entered correct access key and secret key
+
+---
+
+## Key Benefit I Realized
+
+Instead of doing this:
+
+* Go to AWS → create EC2
+* Configure manually
+
+I can just write:
+
+* Terraform code
+* Run `terraform apply`
+
+👉 And everything is created automatically
+
+This is the biggest power of Terraform.
+
+
+## Final Thought
+
+Terraform helped me understand how infrastructure is managed in real-world systems.
+
+It is not just about creating resources, but about:
+
+* Automation
+* Consistency
+* Scalability
+* Multi-cloud management
