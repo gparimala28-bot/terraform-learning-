@@ -1,0 +1,22 @@
+# Terraform files
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+
+# Sensitive variables
+*.tfvars
+*.tfvars.json
+
+# AWS credentials (just in case)
+.aws/
+
+# SSH keys
+*.pem
+
+# Editor files
+*.swp
+*.log
+
