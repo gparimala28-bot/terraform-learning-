@@ -1,0 +1,90 @@
+📘 Day 02 – Terraform Core Concepts
+1️⃣ Provider
+A provider connects Terraform to a cloud platform (AWS, Azure, etc.)
+Defines:
+Region
+Authentication
+
+👉 Required for Terraform to know where and how to create resources
+
+2️⃣ Multi-Region
+Used to create infrastructure in multiple regions
+Achieved using provider alias
+
+👉 Benefits:
+
+High availability
+Disaster recovery
+Better performance for global users
+3️⃣ Resources
+A resource defines what infrastructure to create
+
+Examples:
+
+EC2 instance
+S3 bucket
+
+👉 Important:
+
+Terraform name → internal use
+Tags → visible in cloud console
+4️⃣ Variables
+Used to avoid hardcoding values
+
+👉 Benefits:
+
+Reusability
+Flexibility
+Easy configuration changes
+5️⃣ Output Variables
+Used to display values after resource creation
+
+Examples:
+
+Public IP
+Instance ID
+
+👉 Helps in accessing and verifying resources
+
+6️⃣ TFVARS
+Used to define values for variables based on environment
+
+👉 Example:
+
+dev → small instance
+prod → larger instance
+
+👉 Enables same code for multiple environments
+
+7️⃣ Conditional Expressions
+Used to apply logic in Terraform
+
+👉 Syntax:
+
+condition ? true_value : false_value
+
+👉 Benefits:
+
+Dynamic configuration
+Reduces duplicate code
+
+8️⃣ Debugging
+Helps identify and fix errors
+
+👉 Workflow:
+
+terraform init → setup
+terraform plan → preview
+terraform apply → execute
+
+👉 Useful commands:
+
+terraform validate
+terraform fmt
+
+🧠 Summary
+Provider → connects Terraform to cloud
+Resource → defines infrastructure
+Variables & tfvars → make code flexible
+Conditions → make code dynamic
+Debugging → ensures smooth execution
