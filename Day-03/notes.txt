@@ -1,0 +1,82 @@
+🚀 Terraform Modules
+
+What are Modules?
+
+Modules are a way to split Terraform code into smaller reusable parts.
+
+👉 Instead of writing everything in one file,
+I can organize code into separate blocks and reuse them.
+
+Why I Learned Modules
+
+When I wrote everything in one main.tf:
+
+Code became very long
+Hard to debug
+Not reusable
+One change could break everything
+
+👉 I realized this approach doesn’t work for real projects
+
+Solution – Modules
+
+👉 Module = reusable block of Terraform code
+
+Each module:
+
+Takes input (variables)
+Creates resources
+Gives output (results)
+How Modules Work (My Understanding)
+I pass values from root (main project)
+Module uses those values
+Creates resources
+Returns outputs
+
+👉 Flow:
+Input → Module → Resource → Output
+
+Parent vs Child (Simple)
+Parent (Root)
+Main folder
+Controls everything
+Calls modules
+
+👉 “I manage the flow”
+
+Child (Module)
+Inside modules/ folder
+Does actual work
+
+👉 “I just create resources”
+
+Key Things I Learned
+
+✔ Reusability
+
+Write once → use multiple times
+
+✔ Clean Code
+
+No more big messy files
+
+✔ Separation
+
+Root handles control
+Module handles work
+
+✔ Input & Output
+
+Give input → get result
+
+✔ Decoupling
+
+Modules work independently
+Key Benefit I Realized
+
+Instead of writing same code again and again,
+👉 I can reuse modules for dev, prod, etc.
+
+Final Thought
+
+Modules helped me understand that Terraform is not just about writing code, it is about designing systems properly.
