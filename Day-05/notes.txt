@@ -1,0 +1,95 @@
+🚀 Terraform Provisioners
+
+What are Provisioners?
+Provisioners are used to execute actions after a resource is created.
+👉 Terraform creates infrastructure
+👉 Provisioners configure it
+
+Why I Learned Provisioners
+When I used only Terraform:
+•	EC2 was created 
+•	But could NOT: 
+o	Install software 
+o	Run applications 
+o	Copy files 
+👉 I realized infra alone is not enough
+
+Solution – Provisioners
+👉 Provisioners = post-creation automation
+They help to:
+•	Configure servers 
+•	Deploy apps 
+•	Automate setup 
+
+Types of Provisioners
+
+🧠 File Provisioner
+What it does
+Copies files from local → remote machine
+
+Key Understanding
+•	Uses SSH 
+•	Transfers via SCP 
+
+Use Cases
+✔ App code copy
+✔ Config files
+✔ Env files
+
+Key Point
+👉 Only copies
+👉 Does NOT execute
+
+🧠 Remote-Exec Provisioner
+What it does
+Executes commands on remote machine
+
+Key Understanding
+•	Uses SSH 
+•	Runs commands sequentially 
+
+Use Cases
+✔ Install software
+✔ Setup app
+✔ Run scripts
+✔ Start services
+
+🧠 Local-Exec Provisioner
+What it does
+Executes commands on local machine (where Terraform runs)
+
+Key Understanding
+•	Runs locally, not on EC2 
+•	Triggered after resource creation 
+
+Use Cases
+✔ Print output (IP, URL)
+✔ Call scripts
+✔ Trigger API calls
+✔ Update local files
+
+Key Point
+👉 Runs on local system
+👉 Not inside resource
+
+Key Things I Learned
+✔ Terraform creates infrastructure, not software setup
+✔ Provisioners help bridge that gap
+✔ File = copy files
+✔ Remote-exec = remote execution
+✔ Local-exec → local execution
+✔ They rely on SSH connection
+✔ Useful for quick automation, but risky in production
+
+Important Limitation
+❌ Not idempotent
+❌ Hard to debug
+❌ Failure stops execution
+
+Final Thought
+
+Provisioners helped me understand:
+👉 Terraform alone is not enough for full automation
+👉 We also need a way to configure machines
+
+But in real production systems:Provisioners should be used carefully or replaced with better tools like configuration management
