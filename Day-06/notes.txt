@@ -1,0 +1,81 @@
+🚀 Terraform Workspaces
+
+Overview
+
+Terraform Workspaces allow managing multiple environments (dev, stage, prod) using the same code by maintaining separate state files.
+
+🧠 Core Concept
+
+Terraform tracks infrastructure using a state file.
+Default behavior → ONE state file
+Any config change → modifies existing resource
+
+👉 Terraform does NOT understand environments by default
+
+🔥 Problem (Without Workspaces)
+
+Using different tfvars:
+
+dev → creates EC2 (t2.micro)
+stage → modifies same EC2 → t2.medium ❌
+
+Reason:
+
+Single state file
+Terraform assumes it's the same resource
+
+💡 Solution (Workspaces)
+
+Workspaces create separate state files per environment.
+
+dev → its own state → separate EC2
+stage → its own state → separate EC2
+prod → its own state → separate EC2
+
+👉 Same code, isolated infrastructure
+
+📦 What I Built
+
+✔ Created reusable EC2 module
+✔ Passed variables from root module
+✔ Added instance naming using tags
+✔ Used different tfvars for environments
+
+🧪 What I Tested
+
+Ran Terraform without workspaces
+→ Observed resource modification issue
+Created workspaces:
+dev
+stage
+prod
+Applied configuration per workspace
+
+👉 Result:
+
+Terraform created separate EC2 instances instead of modifying existing one
+
+📁 State Structure
+
+After using workspaces:
+
+terraform.tfstate.d/
+dev/
+stage/
+prod/
+
+👉 Each workspace maintains its own state file
+
+🔑 Key Learnings
+
+✔ State controls Terraform behavior
+✔ Single state = resource overwrite risk
+✔ Workspaces = environment isolation
+✔ Modules + Workspaces = reusable + scalable setup
+✔ Same code can safely manage multiple environments
+
+
+💡 Final Insight
+
+Terraform is not just about creating resources,
+👉 it is about managing infrastructure safely using state and environment isolation.
