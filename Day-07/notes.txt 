@@ -1,0 +1,75 @@
+🚀 Terraform Secrets Management (Vault)
+
+Overview
+
+Terraform Secrets Management ensures sensitive data (like API keys, passwords, credentials) is NOT hardcoded in our infrastructure code.
+
+Instead, secrets are securely stored and accessed using HashiCorp Vault.
+
+🧠 Core Concept
+
+Terraform needs secrets to provision infrastructure, but:
+
+❌ Hardcoding → security risk
+✔ Vault → secure, controlled access
+
+👉 Secrets are fetched at runtime instead of being stored in code
+
+🔥 Problem (Without Vault)
+
+• Secrets stored in .tf files or state
+• Exposed in Git/version control
+• Difficult to rotate
+• Security vulnerability
+
+💡 Solution (Vault Integration)
+
+• Store secrets securely in Vault
+• Use policies to control access
+• Authenticate via AppRole
+• Terraform reads secrets using Vault provider
+
+🏗️ Key Components
+
+• Secret Engine → stores secrets
+• Policy → defines permissions
+• AppRole → authentication method
+• Token → temporary access
+
+🧱 What I Built
+
+✔ Vault setup (dev mode)
+✔ Stored AWS credentials
+✔ Created policy + AppRole
+✔ Integrated Vault with Terraform
+✔ Used secrets to create S3 bucket
+
+❌ Error Faced
+
+permission denied (failed to create child token)
+
+🧠 Root Cause
+
+Policy only allowed reading secrets
+
+❌ Missing permission to create token
+
+✅ Fix
+
+Added permission
+✔ Reapplied policy
+✔ Regenerated secret_id
+✔ Re-ran Terraform
+
+🔑 Key Learnings
+
+✔ Never hardcode secrets
+✔ Vault secures sensitive data
+✔ Policies control access
+✔ AppRole enables automation
+✔ Terraform requires token creation permission
+✔ Proper policy = successful authentication
+
+💡 Final Insight
+
+Terraform is not just provisioning, it’s about secure infrastructure management using external secrets.
