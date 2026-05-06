@@ -1,0 +1,100 @@
+🚀 Terraform Drift Detection & Resolution
+Overview
+
+Terraform Drift occurs when infrastructure changes outside Terraform after deployment.
+
+This creates a mismatch between:
+
+Terraform configuration
+Terraform state
+Actual AWS infrastructure
+
+🧠 Core Concept
+
+Terraform continuously compares:
+
+Desired State (.tf)
+        VS
+Actual AWS Infrastructure
+
+If they differ:
+👉 Terraform detects drift.
+ Terraform configuration and actual infrastructure were out of sync.
+
+💡 Solution (Drift Detection)
+
+Terraform Drift Detection identifies infrastructure changes using: terraform plan
+
+Terraform refreshes real AWS infrastructure data and compares it with the desired configuration.
+
+🏗️ Drift Detection Flow
+
+Terraform Apply
+       ↓
+Infrastructure Created
+       ↓
+Manual AWS Change
+       ↓
+Terraform Plan
+       ↓
+Drift Detected
+       ↓
+Resolve Drift
+
+🏗️ Key Components
+
+• .tf files → desired infrastructure state
+• terraform.tfstate → Terraform resource tracking
+• terraform plan → detects infrastructure drift
+• terraform apply → restores desired state
+
+🧱 Hands-On Implementation
+
+✔ Created EC2 using Terraform
+✔ Applied infrastructure successfully
+✔ Modified EC2 manually in AWS Console
+✔ Detected infrastructure drift
+✔ Resolved drift using Terraform
+
+❌ Problem Faced
+
+Manual changes in AWS caused Terraform configuration and actual infrastructure to become inconsistent.
+
+🧠 Root Cause
+
+Infrastructure was modified outside Terraform.
+
+Terraform state and configuration no longer matched the real AWS resource.
+
+✅ Fix
+
+Detected drift using: terraform plan
+
+Resolved drift using 
+
+terraform apply
+
+Terraform restored AWS infrastructure back to the desired configuration.
+
+Configuration and infrastructure became synchronized again.
+
+✅ Validation
+
+✔ Verified Terraform drift detection successfully
+✔ Confirmed mismatch between config and AWS infrastructure
+✔ Restored infrastructure consistency
+✔ terraform plan returned "No changes" after resolution
+
+🔑 Key Learnings
+
+✔ Drift occurs when infrastructure changes outside Terraform
+✔ terraform plan is a powerful drift detection tool
+✔ Terraform continuously validates real infrastructure
+✔ Infrastructure should have a single source of truth
+✔ Manual cloud changes can create configuration inconsistencies
+
+💡 Final Insight
+
+Terraform is not only a provisioning tool.
+
+👉 It is a continuous infrastructure validation and state management system.
