@@ -1,0 +1,19 @@
+provider "vault" {
+  address = "http://127.0.0.1:8200"
+}
+
+data "vault_kv_secret_v2" "aws" {
+
+  mount = "secret"
+
+  name = "aws"
+}
+
+provider "aws" {
+
+  region = var.region
+
+  access_key = data.vault_kv_secret_v2.aws.data["access_key"]
+
+  secret_key = data.vault_kv_secret_v2.aws.data["secret_key"]
+}

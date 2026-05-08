@@ -10,9 +10,6 @@ crash.log
 *.tfvars
 *.tfvars.json
 
-# AWS credentials (just in case)
-.aws/
-
 # SSH keys
 *.pem
 
